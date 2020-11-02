@@ -2,8 +2,8 @@
 Тут происходит парсинг картинки с расписанием
 """
 from urllib.request import urlretrieve
-from bs4 import BeautifulSoup
 
+from bs4 import BeautifulSoup
 from exceptions import NotSchedule
 from my_logger import logger
 import requests
@@ -28,6 +28,6 @@ def pars_img():
     try:
         image = soup.find(class_="page_raspis_block_img").find("img").get("src")
         urlretrieve(image, filename="schedule/schedule.png")
-        logger.debug("Скачивание успешно завершено!")
+        logger.info("Начинаю скачивание файла")
     except NotSchedule:
         logger.warning("NOT schedule")
